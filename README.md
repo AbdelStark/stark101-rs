@@ -1,2 +1,3 @@
 # stark101-rs
-Stark 101 in Rust
+Stark 101 in Rust.
+

@@ -1,0 +1,9 @@
+[package]
+name = "stark101-rs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ark-ff = { git = "https://github.com/arkworks-rs/algebra/" }
+ark-std = { version = "0.4.0-alpha", default-features = false }
+rand = "0.8.5"
