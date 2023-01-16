@@ -1,7 +1,10 @@
-use ark_ff::{Field, PrimeField};
+use ark_ff::PrimeField;
 use ark_std::UniformRand;
 use rand::thread_rng;
-use stark101_rs::field::F;
+use stark101_rs::{
+    field::{Generator, F},
+    part_1,
+};
 
 fn main() {
     println!("Welcome to STARK 101!");
@@ -9,21 +12,15 @@ fn main() {
     // We can access the prime modulus associated with `F`:
     let modulus = <F as PrimeField>::MODULUS;
     println!("The modulus is: {modulus}");
+    let generator = F::generator();
+    println!("The generator is: {generator}");
 
     // Instantiate random generator
     let mut rng = thread_rng();
 
     // We can generate a random field element:
-    let a = F::rand(&mut rng);
-    println!("a: {a}");
+    let _ = F::rand(&mut rng);
 
-    // We can generate a field element from int value:
-    let b = F::from(42);
-    println!("b: {b}");
-
-    let c = a.square();
-    println!("c: {c}");
-
-    let d = a + b;
-    println!("d: {d}");
+    // Run the first part of the STARK101 tutorial
+    part_1::run();
 }
