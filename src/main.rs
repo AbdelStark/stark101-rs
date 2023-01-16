@@ -1,4 +1,4 @@
-use ark_ff::{BigInteger, Field, PrimeField};
+use ark_ff::{Field, PrimeField};
 use ark_std::UniformRand;
 use rand::thread_rng;
 use stark101_rs::field::F;
