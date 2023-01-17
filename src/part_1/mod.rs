@@ -55,6 +55,7 @@ fn run_find_group() -> Result<()> {
     println!(
         "In case you're stuck or if you want to skip, you can find the solution in src/solutions/part_1/thinking_polynomial.rs"
     );
-    let G = thinking_polynomial::find_group_size_1024();
-    thinking_polynomial::check_find_group_size_1024(G)
+    println!("Hint: When  𝑘  divides  |𝔽×| ,  𝑔𝑘  generates a group of size  |𝔽×|𝑘 , and the n-th power of some FieldElement  𝑥  can be computed by calling x ** n .");
+    let (g, G) = thinking_polynomial::find_group_size_1024();
+    thinking_polynomial::check_find_group_size_1024(g, G)
 }
