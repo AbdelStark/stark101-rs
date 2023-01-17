@@ -1,6 +1,7 @@
 pub mod fib_square;
 pub mod thinking_polynomial;
 use crate::field::F;
+use ark_poly::{univariate::SparsePolynomial, Polynomial};
 use eyre::Result;
 
 pub fn run() -> Result<()> {
@@ -45,7 +46,7 @@ fn run_fibonacci_sq_trace() -> Result<()> {
 fn run_thinking_of_polynomials() -> Result<()> {
     println!("Thinking of Polynomials");
     run_find_group()?;
-
+    run_polynomial_class()?;
     Ok(())
 }
 
@@ -58,4 +59,24 @@ fn run_find_group() -> Result<()> {
     println!("Hint: When  𝑘  divides  |𝔽×| ,  𝑔𝑘  generates a group of size  |𝔽×|𝑘 , and the n-th power of some FieldElement  𝑥  can be computed by calling x ** n .");
     let (g, G) = thinking_polynomial::find_group_size_1024();
     thinking_polynomial::check_find_group_size_1024(g, G)
+}
+
+fn run_polynomial_class() -> Result<()> {
+    println!("Polynomial Class");
+    // The polynomial 2x^2 + 1.
+    let p = SparsePolynomial::from_coefficients_vec(vec![(2, F::from(2)), (0, F::from(1))]);
+    // Evaluate the polynomial at 2.
+    let p2 = p.evaluate(&F::from(2));
+    println!("p(2) = {}", p2);
+    Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_run_polynomial_class() {
+        let _ = run_polynomial_class();
+    }
 }
