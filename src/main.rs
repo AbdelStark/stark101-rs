@@ -1,12 +1,13 @@
 use ark_ff::PrimeField;
 use ark_std::UniformRand;
+use eyre::Result;
 use rand::thread_rng;
 use stark101_rs::{
     field::{Generator, F},
     part_1,
 };
 
-fn main() {
+fn main() -> Result<()> {
     println!("Welcome to STARK 101!");
 
     // We can access the prime modulus associated with `F`:
@@ -22,5 +23,9 @@ fn main() {
     let _ = F::rand(&mut rng);
 
     // Run the first part of the STARK101 tutorial
-    part_1::run();
+    match part_1::run() {
+        Ok(_) => println!("Part 1 completed successfully!"),
+        Err(e) => println!("Part 1 failed with error: {e}"),
+    };
+    Ok(())
 }

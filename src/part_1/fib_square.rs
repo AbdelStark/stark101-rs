@@ -30,6 +30,8 @@ impl FibonacciSquare {
     /// The nth element of the sequence.
     pub fn compute(&mut self, n: usize) -> F {
         // Hint: you can use the `square()` method on `F` to compute the square of a field element.
-        todo!()
+
+        // Return mock value for now.
+        F::from(0)
     }
 }
